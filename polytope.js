@@ -202,7 +202,7 @@ function projcol(n0, n1) {
              (gdist(m0, m1)[0] == 3 && gdist(m0, m1)[1] == -1) ||
               gdist(m0, m1)[0] == 2) {
     return 2;   // red
-  } else if (gdist(m0, m1)[0] == 6 || gdist(m0, m1)[3] == 3) {
+  } else if (gdist(m0, m1)[0] == 6 || gdist(m0, m1)[0] == 3) {
     return 3;   // yellow
   } else {
     return 0;
