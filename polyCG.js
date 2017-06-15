@@ -2,7 +2,6 @@ var camera;
 var scene;
 var renderer;
 
-var drawbry = [true, true, true];
 var blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
 var red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
 var yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
@@ -102,18 +101,16 @@ function init() {
     for (let dim = 0; dim < 4; dim++) {
       if (dim <= t && t <= dim + 2) {
         for (let j = 0; j < 3; j++) {
-          if (drawbry[j]) {
-            for (let i = tenum[dim][j]; i < tenum[dim][j+1]; i++) {
-              let lineGeometry = new THREE.Geometry();
-              lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[0][0],
-                                                           ends(dim, i)[0][1],
-                                                           ends(dim, i)[0][2]));
-              lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[1][0],
-                                                           ends(dim, i)[1][1],
-                                                           ends(dim, i)[1][2]));
-              let line = new THREE.Line(lineGeometry, bry[j]);
-              groups[j].add(line);
-            }
+          for (let i = tenum[dim][j]; i < tenum[dim][j+1]; i++) {
+            let lineGeometry = new THREE.Geometry();
+            lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[0][0],
+            ends(dim, i)[0][1],
+            ends(dim, i)[0][2]));
+            lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[1][0],
+            ends(dim, i)[1][1],
+            ends(dim, i)[1][2]));
+            let line = new THREE.Line(lineGeometry, bry[j]);
+            groups[j].add(line);
           }
           scene.add(groups[j]);
         }
