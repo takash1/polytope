@@ -15,7 +15,7 @@ var tenum = array2d(4, 4);    //{0, b, b+r, b+r+y}for each dimension
 var pvert = array2d(120, 3);
 var vert0 = array2d(720, 3);
 var vert1 = array2d(3600, 3);
-var  vert2 = array2d(3600, 3);
+var vert2 = array2d(3600, 3);
 var vert3 = array2d(1200, 3);
 var tvert = [vert0, vert1, vert2, vert3];
 
