@@ -10,9 +10,9 @@ state
 */
 const GR = (Math.sqrt(5) + 1) / 2;
 const state = [1, 1.5, 2, 2.5, 3, 5-GR, 4];
-const ws = 140;                 // whole size
 let t = state[0];
 
+const ws = 140;                 // whole size
 const nvert = array2d(120, 4);  // vertices
 const nhd = array2d(120, 12);   // neighborhood
 
