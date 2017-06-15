@@ -1,27 +1,27 @@
 const GR = (Math.sqrt(5) + 1) / 2;
-var ws = 140;       // whole size
-var t = 1;          // state 600(t=1),rectified600(t=2),rect120(t=3),120(t=4)
+const ws = 140;   // whole size
+let t = 5 - GR;   // state 600(t=1),rectified600(t=2),rect120(t=3),120(t=4)
 
-var nvert = array2d(120, 4);  // vertices
-var nhd = array2d(120, 12);   // neighborhood
+const nvert = array2d(120, 4);  // vertices
+const nhd = array2d(120, 12);   // neighborhood
 
-var edge0 = array2d(720, 2);
-var edge1 = array2d(3600, 2);
-var edge2 = array2d(3600, 2);
-var edge3 = array2d(1200, 2);
-var tedge = [edge0, edge1, edge2, edge3];
-var tenum = array2d(4, 4);    //{0, b, b+r, b+r+y}for each dimension
+const edge0 = array2d(720, 2);
+const edge1 = array2d(3600, 2);
+const edge2 = array2d(3600, 2);
+const edge3 = array2d(1200, 2);
+const tedge = [edge0, edge1, edge2, edge3];
+const tenum = array2d(4, 4);    // {0, b, b+r, b+r+y}for each dimension
 
-var pvert = array2d(120, 3);
-var vert0 = array2d(720, 3);
-var vert1 = array2d(3600, 3);
-var vert2 = array2d(3600, 3);
-var vert3 = array2d(1200, 3);
-var tvert = [vert0, vert1, vert2, vert3];
+const pvert = array2d(120, 3);
+const vert0 = array2d(720, 3);
+const vert1 = array2d(3600, 3);
+const vert2 = array2d(3600, 3);
+const vert3 = array2d(1200, 3);
+const tvert = [vert0, vert1, vert2, vert3];
 
 
 function setupArray() {
-  let aper = [
+  const aper = [
     [0, 1, 2, 3], [0, 3, 1, 2], [0, 2, 3, 1], [3, 1, 0, 2],
     [2, 1, 3, 0], [2, 3, 0, 1], [1, 0, 3, 2], [3, 0, 2, 1],
     [2, 0, 1, 3], [1, 3, 2, 0], [1, 2, 0, 3], [3, 2, 1, 0]
@@ -30,10 +30,10 @@ function setupArray() {
 
   // set vertices
   for (let i = 0; i < 16; i++) {
-    let l = i;
+    let k = i;
     for (let j = 0; j < 4; j++) {
-      nvert[i][j] = 2 * (l % 2) - 1;
-      l = Math.floor(l / 2);
+      nvert[i][j] = 2 * (k % 2) - 1;
+      k = Math.floor(k / 2);
     }
   }
 
@@ -46,14 +46,14 @@ function setupArray() {
   for (let i = 1; i < 12; i++) {
     for (let j = 0; j < 8; j++) {
       for (let k = 0; k < 4; k++) {
-        nvert[8 * i + j + 16][k] = nvert[j+16][aper[i][k]];
+        nvert[8*i+j+16][k] = nvert[j+16][aper[i][k]];
       }
     }
   }
 
   for (let i = 0; i < 4; i++) {
-    nvert[2 * i + 112][i] = 2;
-    nvert[2 * i + 113][i] = -2;
+    nvert[2*i+112][i] = 2;
+    nvert[2*i+113][i] = -2;
   }
 
   for (let i = 0; i < 120; i++) {
@@ -138,9 +138,9 @@ function setupArray() {
 
 
 function array2d(i, j) {
-  let arr = new Array(i);
-  for (let l = 0; l < i; l++) {
-    arr[l] = Array.apply(null, Array(j)).map(function() { return 0 });
+  const arr = new Array(i);
+  for (let k = 0; k < i; k++) {
+    arr[k] = Array.apply(null, Array(j)).map(function() { return 0 });
   }
   return arr;
 }
@@ -148,7 +148,7 @@ function array2d(i, j) {
 
 function gval(num) {
   // {a,b} denotes a+b*(golden ratio)
-  let val = [
+  const val = [
     [0, -1], [1, -1], [-2, 0], [-1, 0],
     [0,  0], [1, 0], [2, 0], [-1, 1], [0, 1]
   ];
@@ -170,9 +170,9 @@ function isedge(n0, n1) {
 
 
 function gdist(n1, n2) {
-  let m0 = n1.length;
-  let m1 = array2d(m0, 2);
-  let m2 = [0, 0];
+  const m0 = n1.length;
+  const m1 = array2d(m0, 2);
+  const m2 = [0, 0];
 
   for (let i = 0; i < m0; i++) {
     for (let j = 0; j < 2; j++) {
@@ -189,8 +189,8 @@ function gdist(n1, n2) {
 
 
 function projcol(n0, n1) {
-  let m0 = new Array(3);
-  let m1 = new Array(3);
+  const m0 = new Array(3);
+  const m1 = new Array(3);
   for (let i = 0; i < 3; i++) {
     m0[i] = nvert[n0][i];
     m1[i] = nvert[n1][i];
@@ -211,11 +211,11 @@ function projcol(n0, n1) {
 
 
 function cap(n0, n1, m) {
-  let a2 = new Array(m);
+  const a2 = new Array(m);
   let i = 0;
   let j = 0;
   let k = 0;
-  while (k < m && i < 12 && j < 12) {
+  while (i < 12 && j < 12 && k < m) {
     if (nhd[n0][i] < nhd[n1][j]) {
       i++;
     } else if (nhd[n0][i] > nhd[n1][j]) {
@@ -232,7 +232,7 @@ function cap(n0, n1, m) {
 
 
 function ends(dim, i) {
-  let en = array2d(2, 3);
+  const en = array2d(2, 3);
   for (let a = 0; a < 2; a++) {
     for (let b = 0; b < 3; b++) {
       en[a][b] = ws * (tvert[dim][i][b] / t
