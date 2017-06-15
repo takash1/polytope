@@ -104,11 +104,11 @@ function init() {
           for (let i = tenum[dim][j]; i < tenum[dim][j+1]; i++) {
             let lineGeometry = new THREE.Geometry();
             lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[0][0],
-            ends(dim, i)[0][1],
-            ends(dim, i)[0][2]));
+                                                         ends(dim, i)[0][1],
+                                                         ends(dim, i)[0][2]));
             lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[1][0],
-            ends(dim, i)[1][1],
-            ends(dim, i)[1][2]));
+                                                         ends(dim, i)[1][1],
+                                                         ends(dim, i)[1][2]));
             let line = new THREE.Line(lineGeometry, bry[j]);
             groups[j].add(line);
           }
