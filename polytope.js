@@ -1,6 +1,17 @@
+/*
+state
+<0> = 600
+<1> = TRUNCATED 600
+<2> = RECTIFIED 600
+<3> = BITRUNCATED
+<4> = RECTIFIED 120
+<5> = TRUNCATED 120
+<6> = 120
+*/
 const GR = (Math.sqrt(5) + 1) / 2;
-const ws = 140;   // whole size
-let t = 5 - GR;   // state 600(t=1),rectified600(t=2),rect120(t=3),120(t=4)
+const state = [1, 1.5, 2, 2.5, 3, 5-GR, 4];
+const ws = 140;                 // whole size
+let t = state[0];
 
 const nvert = array2d(120, 4);  // vertices
 const nhd = array2d(120, 12);   // neighborhood
