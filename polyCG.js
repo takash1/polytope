@@ -1,23 +1,21 @@
-var camera;
-var scene;
-var renderer;
+let camera;
+let renderer;
 
-var blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
-var red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
-var yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
-var bry = [blue, red, yellow];
+const blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
+const red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
+const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
+const bry = [blue, red, yellow];
 
 setupArray();
 
 function init() {
-  let stats = initStats();
-  let clock = new THREE.Clock();
-  let groupB = new THREE.Group();
-  let groupR = new THREE.Group();
-  let groupY = new THREE.Group();
-  let groups = [groupB, groupR, groupY];
-
-  scene = new THREE.Scene();
+  const stats = initStats();
+  const clock = new THREE.Clock();
+  const groupB = new THREE.Group();
+  const groupR = new THREE.Group();
+  const groupY = new THREE.Group();
+  const groups = [groupB, groupR, groupY];
+  const scene = new THREE.Scene();
 
   camera = new THREE.OrthographicCamera(window.innerWidth / -2,
                                         window.innerWidth / 2,
@@ -34,17 +32,17 @@ function init() {
   camera.lookAt(scene.position);
 
 
-  let trackballConrols = new THREE.OrthographicTrackballControls(camera);
+  const trackballConrols = new THREE.OrthographicTrackballControls(camera);
   trackballConrols.rotateSpeed = 0.05;
   trackballConrols.zoomSpeed = 0.1;
   trackballConrols.panSpeed = 0.1;
 
-  let axis = new THREE.AxisHelper(450);
+  const axis = new THREE.AxisHelper(450);
   scene.add(axis);
 
   paintComponent();
 
-  let controls = new function() {
+  const controls = new function() {
     this.rotationX = false;
     this.rotationY = false;
     this.rotationZ = false;
@@ -55,14 +53,14 @@ function init() {
     this.axis = false;
   };
 
-  let gui = new dat.GUI();
+  const gui = new dat.GUI();
 
-  let guiRotation = gui.addFolder('rotation');
+  const guiRotation = gui.addFolder('rotation');
   guiRotation.add(controls, 'rotationX');
   guiRotation.add(controls, 'rotationY');
   guiRotation.add(controls, 'rotationZ');
 
-  let guiLines = gui.addFolder('lines');
+  const guiLines = gui.addFolder('lines');
   guiLines.add(controls, 'blue');
   guiLines.add(controls, 'red');
   guiLines.add(controls, 'yellow');
@@ -74,7 +72,7 @@ function init() {
 
   function render() {
     stats.update();
-    let delta = clock.getDelta();
+    const delta = clock.getDelta();
     trackballConrols.update(delta);
 
     if (controls.rotationX) {
@@ -102,14 +100,14 @@ function init() {
       if (dim <= t && t <= dim + 2) {
         for (let j = 0; j < 3; j++) {
           for (let i = tenum[dim][j]; i < tenum[dim][j+1]; i++) {
-            let lineGeometry = new THREE.Geometry();
+            const lineGeometry = new THREE.Geometry();
             lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[0][0],
                                                          ends(dim, i)[0][1],
                                                          ends(dim, i)[0][2]));
             lineGeometry.vertices.push(new THREE.Vector3(ends(dim, i)[1][0],
                                                          ends(dim, i)[1][1],
                                                          ends(dim, i)[1][2]));
-            let line = new THREE.Line(lineGeometry, bry[j]);
+            const line = new THREE.Line(lineGeometry, bry[j]);
             groups[j].add(line);
           }
           scene.add(groups[j]);
@@ -120,7 +118,7 @@ function init() {
 
 
   function initStats() {
-    let stats = new Stats();
+    const stats = new Stats();
 
     stats.setMode(0);
 
