@@ -32,7 +32,7 @@ function init() {
   camera.lookAt(scene.position);
 
 
-  const trackballConrols = new THREE.OrthographicTrackballControls(camera);
+  let trackballConrols = new THREE.OrthographicTrackballControls(camera);
   trackballConrols.rotateSpeed = 0.05;
   trackballConrols.zoomSpeed = 0.1;
   trackballConrols.panSpeed = 0.1;
@@ -51,6 +51,39 @@ function init() {
     this.red = true;
     this.yellow = true;
     this.axis = false;
+
+    this.cameraMode = "Orthographic";
+    this.switchCamera = function() {
+      if (camera instanceof THREE.PerspectiveCamera) {
+        camera = new THREE.OrthographicCamera(window.innerWidth / -2,
+                                              window.innerWidth / 2,
+                                              window.innerHeight / 2,
+                                              window.innerHeight / -2,
+                                              -100, 3000);
+        camera.position.z = -1000;
+        camera.lookAt(scene.position);
+
+        trackballConrols = new THREE.OrthographicTrackballControls(camera);
+        trackballConrols.rotateSpeed = 0.05;
+        trackballConrols.zoomSpeed = 0.1;
+        trackballConrols.panSpeed = 0.1;
+
+        this.cameraMode = "Orthographic";
+      } else {
+        camera = new THREE.PerspectiveCamera(45,
+                                       window.innerWidth / window.innerHeight,
+                                       0.1, 3000);
+        camera.position.z = -750;
+        camera.lookAt(scene.position);
+
+        trackballConrols = new THREE.TrackballControls(camera);
+        trackballConrols.rotateSpeed = 1.0;
+        trackballConrols.zoomSpeed = 0.1;
+        trackballConrols.panSpeed = 0.1;
+
+        this.cameraMode = "Perspective";
+      }
+    };
   };
 
   const gui = new dat.GUI();
@@ -65,6 +98,9 @@ function init() {
   guiLines.add(controls, 'red');
   guiLines.add(controls, 'yellow');
   guiLines.add(controls, 'axis');
+
+  gui.add(controls, 'switchCamera');
+  gui.add(controls, 'cameraMode').listen();
 
   document.getElementById("WebGL-output").appendChild(renderer.domElement);
   render();
