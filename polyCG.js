@@ -17,25 +17,23 @@ function init() {
   const groups = [groupB, groupR, groupY];
   const scene = new THREE.Scene();
 
-  camera = new THREE.OrthographicCamera(window.innerWidth / -2,
-                                        window.innerWidth / 2,
-                                        window.innerHeight / 2,
-                                        window.innerHeight / -2,
-                                        -100, 3000);
+
+  camera = new THREE.PerspectiveCamera(45,
+                                 window.innerWidth / window.innerHeight,
+                                 0.1, 3000);
+  camera.position.z = -780;
+  camera.lookAt(scene.position);
+
+  let trackballConrols = new THREE.TrackballControls(camera);
+  trackballConrols.rotateSpeed = 1.0;
+  trackballConrols.zoomSpeed = 0.1;
+  trackballConrols.panSpeed = 0.1;
 
 
   renderer = new THREE.WebGLRenderer();
   renderer.setClearColor(new THREE.Color(0x000000));
   renderer.setSize(window.innerWidth, window.innerHeight);
 
-  camera.position.z = -1000;
-  camera.lookAt(scene.position);
-
-
-  let trackballConrols = new THREE.OrthographicTrackballControls(camera);
-  trackballConrols.rotateSpeed = 0.05;
-  trackballConrols.zoomSpeed = 0.1;
-  trackballConrols.panSpeed = 0.1;
 
   const axis = new THREE.AxisHelper(450);
   scene.add(axis);
@@ -52,7 +50,7 @@ function init() {
     this.yellow = true;
     this.axis = false;
 
-    this.cameraMode = "Orthographic";
+    this.cameraMode = "Perspective";
     this.switchCamera = function() {
       if (camera instanceof THREE.PerspectiveCamera) {
         camera = new THREE.OrthographicCamera(window.innerWidth / -2,
@@ -73,7 +71,7 @@ function init() {
         camera = new THREE.PerspectiveCamera(45,
                                        window.innerWidth / window.innerHeight,
                                        0.1, 3000);
-        camera.position.z = -750;
+        camera.position.z = -780;
         camera.lookAt(scene.position);
 
         trackballConrols = new THREE.TrackballControls(camera);
