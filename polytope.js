@@ -9,26 +9,26 @@ state
 <6> = 120
 */
 const GR = (Math.sqrt(5) + 1) / 2;
-const state = [1, 1.5, 2, 2.5, 3, 5-GR, 4];
-let t = state[0];
+const STATE = [1, 1.5, 2, 2.5, 3, 5-GR, 4];
+let t = STATE[0];
 
 const ws = 140;                 // whole size
-const nvert = array2d(120, 4);  // vertices
-const nhd = array2d(120, 12);   // neighborhood
+let nvert = array2d(120, 4);  // vertices
+let nhd = array2d(120, 12);   // neighborhood
 
-const edge0 = array2d(720, 2);
-const edge1 = array2d(3600, 2);
-const edge2 = array2d(3600, 2);
-const edge3 = array2d(1200, 2);
-const tedge = [edge0, edge1, edge2, edge3];
-const tenum = array2d(4, 4);    // {0, b, b+r, b+r+y}for each dimension
+let edge0 = array2d(720, 2);
+let edge1 = array2d(3600, 2);
+let edge2 = array2d(3600, 2);
+let edge3 = array2d(1200, 2);
+let tedge = [edge0, edge1, edge2, edge3];
+let tenum = array2d(4, 4);    // {0, b, b+r, b+r+y}for each dimension
 
-const pvert = array2d(120, 3);
-const vert0 = array2d(720, 3);
-const vert1 = array2d(3600, 3);
-const vert2 = array2d(3600, 3);
-const vert3 = array2d(1200, 3);
-const tvert = [vert0, vert1, vert2, vert3];
+let pvert = array2d(120, 3);
+let vert0 = array2d(720, 3);
+let vert1 = array2d(3600, 3);
+let vert2 = array2d(3600, 3);
+let vert3 = array2d(1200, 3);
+let tvert = [vert0, vert1, vert2, vert3];
 
 
 function setupArray() {
@@ -263,4 +263,24 @@ function pos(dim, r) {
   } else {
     return 1 / r;
   }
+}
+
+
+function reset() {
+  nvert = array2d(120, 4);
+  nhd = array2d(120, 12);
+
+  edge0 = array2d(720, 2);
+  edge1 = array2d(3600, 2);
+  edge2 = array2d(3600, 2);
+  edge3 = array2d(1200, 2);
+  tedge = [edge0, edge1, edge2, edge3];
+  tenum = array2d(4, 4);
+
+  pvert = array2d(120, 3);
+  vert0 = array2d(720, 3);
+  vert1 = array2d(3600, 3);
+  vert2 = array2d(3600, 3);
+  vert3 = array2d(1200, 3);
+  tvert = [vert0, vert1, vert2, vert3];
 }

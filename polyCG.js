@@ -18,27 +18,29 @@ function init() {
   const scene = new THREE.Scene();
 
 
+  renderer = new THREE.WebGLRenderer();
+  renderer.setClearColor(new THREE.Color(0x000000));
+  renderer.setSize(window.innerWidth, window.innerHeight);
+
+
   camera = new THREE.PerspectiveCamera(45,
                                  window.innerWidth / window.innerHeight,
                                  0.1, 3000);
   camera.position.z = -780;
   camera.lookAt(scene.position);
 
-  let trackballConrols = new THREE.TrackballControls(camera);
+  let trackballConrols = new THREE.TrackballControls(camera,
+                                                     renderer.domElement);
   trackballConrols.rotateSpeed = 1.0;
   trackballConrols.zoomSpeed = 0.1;
   trackballConrols.panSpeed = 0.1;
-
-
-  renderer = new THREE.WebGLRenderer();
-  renderer.setClearColor(new THREE.Color(0x000000));
-  renderer.setSize(window.innerWidth, window.innerHeight);
 
 
   const axis = new THREE.AxisHelper(450);
   scene.add(axis);
 
   paintComponent();
+
 
   const controls = new function() {
     this.rotationX = false;
@@ -61,7 +63,8 @@ function init() {
         camera.position.z = -1000;
         camera.lookAt(scene.position);
 
-        trackballConrols = new THREE.OrthographicTrackballControls(camera);
+        trackballConrols = new THREE.OrthographicTrackballControls(camera,
+                                                          renderer.domElement);
         trackballConrols.rotateSpeed = 0.05;
         trackballConrols.zoomSpeed = 0.1;
         trackballConrols.panSpeed = 0.1;
@@ -74,7 +77,8 @@ function init() {
         camera.position.z = -780;
         camera.lookAt(scene.position);
 
-        trackballConrols = new THREE.TrackballControls(camera);
+        trackballConrols = new THREE.TrackballControls(camera,
+                                                       renderer.domElement);
         trackballConrols.rotateSpeed = 1.0;
         trackballConrols.zoomSpeed = 0.1;
         trackballConrols.panSpeed = 0.1;
@@ -82,9 +86,60 @@ function init() {
         this.cameraMode = "Perspective";
       }
     };
+
+    this.state = 'regular600';
+    this.redraw = function() {
+      switch (controls.state) {
+        case 'regular600':
+          t = STATE[0];
+          break;
+        case 'truncated600':
+          t = STATE[1];
+          break;
+        case 'rectified600':
+          t = STATE[2];
+          break;
+        case 'bitruncated':
+          t = STATE[3];
+          break;
+        case 'rectified120':
+          t = STATE[4];
+          break;
+        case 'truncated120':
+          t = STATE[5];
+          break;
+        case 'regular120':
+          t = STATE[6];
+          break;
+        default:
+          t = STATE[0];
+      }
+      reset();
+      setupArray();
+
+      while (scene.children[1].children.length > 0) {
+        scene.children[1].remove(scene.children[1].children[0]);
+      }
+      while (scene.children[2].children.length > 0) {
+        scene.children[2].remove(scene.children[2].children[0]);
+      }
+      while (scene.children[3].children.length > 0) {
+        scene.children[3].remove(scene.children[3].children[0]);
+      }
+
+      paintComponent();
+    };
   };
 
   const gui = new dat.GUI();
+
+  gui.add(controls, 'state',
+          ['regular600', 'truncated600', 'rectified600',
+           'bitruncated', 'rectified120', 'truncated120',
+           'regular120']).onChange(controls.redraw);
+
+  gui.add(controls, 'switchCamera');
+  gui.add(controls, 'cameraMode').listen();
 
   const guiRotation = gui.addFolder('rotation');
   guiRotation.add(controls, 'rotationX');
@@ -96,9 +151,6 @@ function init() {
   guiLines.add(controls, 'red');
   guiLines.add(controls, 'yellow');
   guiLines.add(controls, 'axis');
-
-  gui.add(controls, 'switchCamera');
-  gui.add(controls, 'cameraMode').listen();
 
   document.getElementById("WebGL-output").appendChild(renderer.domElement);
   render();
