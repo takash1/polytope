@@ -117,14 +117,11 @@ function init() {
       reset();
       setupArray();
 
-      while (scene.children[1].children.length > 0) {
-        scene.children[1].remove(scene.children[1].children[0]);
-      }
-      while (scene.children[2].children.length > 0) {
-        scene.children[2].remove(scene.children[2].children[0]);
-      }
-      while (scene.children[3].children.length > 0) {
-        scene.children[3].remove(scene.children[3].children[0]);
+      // remove all existing lines
+      for (let i = 1; i <= 3; i++) {
+        while (scene.children[i].children.length > 0) {
+          scene.children[i].remove(scene.children[i].children[0]);
+        }
       }
 
       paintComponent();
