@@ -1,18 +1,20 @@
 /*
-state
-<0> = 600
-<1> = TRUNCATED 600
-<2> = RECTIFIED 600
-<3> = BITRUNCATED
-<4> = RECTIFIED 120
-<5> = TRUNCATED 120
-<6> = 120
+STATE
+regular600    : t=1
+truncated600  : t=1.5
+rectified600  : t=2
+bitruncated   : t=2.5
+rectified120  : t=3
+truncated120  : t=5-GR
+regular120    : t=4
 */
 const GR = (Math.sqrt(5) + 1) / 2;
-const STATE = [1, 1.5, 2, 2.5, 3, 5-GR, 4];
-let t = STATE[0];
+const STATE = {'regular600': 1, 'truncated600': 1.5, 'rectified600': 2,
+               'bitruncated': 2.5, 'rectified120': 3, 'truncated120': 5-GR,
+               'regular120': 4};
+let t = STATE['regular600'];
 
-const ws = 140;                 // whole size
+const ws = 140;               // whole size
 let nvert = array2d(120, 4);  // vertices
 let nhd = array2d(120, 12);   // neighborhood
 

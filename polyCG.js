@@ -89,31 +89,8 @@ function init() {
 
     this.state = 'regular600';
     this.redraw = function() {
-      switch (controls.state) {
-        case 'regular600':
-          t = STATE[0];
-          break;
-        case 'truncated600':
-          t = STATE[1];
-          break;
-        case 'rectified600':
-          t = STATE[2];
-          break;
-        case 'bitruncated':
-          t = STATE[3];
-          break;
-        case 'rectified120':
-          t = STATE[4];
-          break;
-        case 'truncated120':
-          t = STATE[5];
-          break;
-        case 'regular120':
-          t = STATE[6];
-          break;
-        default:
-          t = STATE[0];
-      }
+      // change state
+      t = STATE[controls.state];
       reset();
       setupArray();
 
