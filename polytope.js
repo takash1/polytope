@@ -97,8 +97,8 @@ function setupArray() {
           tedge[0][m][0] = j;
           tedge[0][m][1] = nhd[j][k];
           for (let l = 0; l < 5; l++) {
-            tedge[1][5 * m + l] = tedge[0][m];
-            tedge[2][5 * m + l] = tedge[0][m];
+            tedge[1][5*m+l] = tedge[0][m];
+            tedge[2][5*m+l] = tedge[0][m];
           }
           m++;
         }
@@ -114,14 +114,14 @@ function setupArray() {
   for (let i = 0; i < tenum[0][3]; i++) {
     ar = cap(tedge[0][i][0], tedge[0][i][1], 5);
     for (let j = 0; j < 5; j++) {
-      tvert[1][5 * i + j] = pvert[ar[j]];
+      tvert[1][5*i+j] = pvert[ar[j]];
     }
     let l = 0;
     for (let j = 0; j < 4; j++) {
       for (let k = j + 1; k < 5; k++) {
         if (isedge(ar[j], ar[k]) == 1) {
           for (let m = 0; m < 3; m++) {
-            tvert[2][5 * i + l][m] = pvert[ar[j]][m] + pvert[ar[k]][m];
+            tvert[2][5*i+l][m] = pvert[ar[j]][m] + pvert[ar[k]][m];
           }
           l++;
         }
