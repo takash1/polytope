@@ -1,16 +1,16 @@
-# 正600胞体
+# 4次元多面体
 
-すぐに試してみたい方は[こちら](http://ae-takashiueno.appspot.com/research_math.html)
+[4次元多面体のCG](polytope.html)
 
 ## ４次元の世界を覗いてみよう
 
 - 4次元で正多面体にあたるものは6種類あります。
-- 正120胞体は正12面体が120個、正600胞体は正4面体が600個からできています。
-- このプログラムは、４次元図形の座標軸を一つ忘れさせて３次元で表現したものです。（射影といいます）
+- 正600胞体は正4面体が600個，正120胞体は正12面体が120個からできています。
+- このプログラムは，４次元図形の座標軸を一つ忘れさせて３次元で表現したものです。（射影といいます）
 - [詳しい解説](http://www.i.h.kyoto-u.ac.jp/~tsuiki/600cell/)
 
-
-## index.html
+## プログラムの概要
+### polytope.html
 ブラウザで４次元図形を見ることができます。
 回転、拡大などができます。
 
@@ -25,7 +25,7 @@ Chrome, Firefox推奨
 |右上GUI                      |その他の機能　　　　　　　　|
 
 
-## index_VR.html & index_VR_rot.html
+### index_VR.html & index_VR_rot.html
 Google Cardboardで立体視できます。
 
 Android端末でChromeを利用してください。
