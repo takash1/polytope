@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Polytope</title>
+  <script type="text/javascript" src="libs/three.min.js"></script>
+  <script type="text/javascript" src="libs/CardboardEffect.js"></script>
+  <script type="text/javascript" src="polytope.js"></script>
+  <script type="text/javascript" src="polyVR.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="WebGL-output">
+  </div>
+
+  <script type="text/javascript">
+    t = STATE['regular600'];
+    window.onload = init;
+    window.addEventListener('resize', onResize, false);
+  </script>
+</body>
+
+</html>

@@ -1,6 +1,21 @@
 # 4次元多面体
 
-[4次元多面体のCG](polytope.html)
+[Webページ](https://takash1.github.io/polytope/)
+
+## プログラムリスト
+
+### Webブラウザ
+- [4次元多面体のCG](polytope.html)
+
+### Google Cardboard
+- [regular600](polytope_cb_regular600.html)
+- [truncated600](polytope_cb_truncated600.html)
+- [rectified600](polytope_cb_rectified600.html)
+- [bitruncated](polytope_cb_bitruncated.html)
+- [rectified120](polytope_cb_rectified120.html)
+- [truncated120](polytope_cb_truncated120.html)
+- [regular120](polytope_cb_regular120.html)
+
 
 ## ４次元の世界を覗いてみよう
 
@@ -12,7 +27,8 @@
 ## プログラムの概要
 ### polytope.html
 ブラウザで４次元図形を見ることができます。
-回転、拡大などができます。
+
+回転、拡大などができます。(switchCameraを押した後)
 
 Chrome, Firefox推奨
 
@@ -25,7 +41,7 @@ Chrome, Firefox推奨
 |右上GUI                      |その他の機能　　　　　　　　|
 
 
-### index_VR.html & index_VR_rot.html
+### polytope_cb_*.html
 Google Cardboardで立体視できます。
 
 Android端末でChromeを利用してください。
