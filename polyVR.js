@@ -37,7 +37,6 @@ function init() {
   camera.position.z = -1200;
   camera.lookAt(scene.position);
 
-  const controls = new THREE.DeviceOrientationControls(camera);
   const effect = new THREE.CardboardEffect(renderer);
 
   paintComponent();
@@ -47,6 +46,7 @@ function init() {
 
 
   function render() {
+<<<<<<< HEAD
     if (rot < divide) {
       scene.rotation.y += angle;
       rot++;
@@ -57,6 +57,8 @@ function init() {
       rot = 0;
     }
     controls.update();
+=======
+>>>>>>> parent of d15d604... Add Headtracking
     requestAnimationFrame(render);
     effect.render(scene, camera);
   }
