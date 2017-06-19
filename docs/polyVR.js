@@ -32,6 +32,7 @@ function init() {
   camera.position.z = -1200;
   camera.lookAt(scene.position);
 
+  const controls = new THREE.DeviceOrientationControls(camera);
   const effect = new THREE.CardboardEffect(renderer);
 
   paintComponent();
@@ -41,6 +42,7 @@ function init() {
 
 
   function render() {
+    controls.update();
     requestAnimationFrame(render);
     effect.render(scene, camera);
   }
