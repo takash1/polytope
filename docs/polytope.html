@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Polytope</title>
+  <script type="text/javascript" src="libs/three.min.js"></script>
+  <script type="text/javascript" src="libs/stats.min.js"></script>
+  <script type="text/javascript" src="libs/dat.gui.min.js"></script>
+  <script type="text/javascript" src="libs/TrackballControls.js"></script>
+  <script type="text/javascript" src="libs/OrthographicTrackballControls.js"></script>
+  <script type="text/javascript" src="polytope.js"></script>
+  <script type="text/javascript" src="polyCG.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="Stats-output">
+  </div>
+
+  <div id="WebGL-output">
+  </div>
+
+  <script type="text/javascript">
+    window.onload = init;
+    window.addEventListener('resize', onResize, false);
+  </script>
+</body>
+
+</html>
