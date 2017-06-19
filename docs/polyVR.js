@@ -43,6 +43,7 @@ function init() {
 
   function render() {
     controls.update();
+    camera.lookAt(scene.position);
     requestAnimationFrame(render);
     effect.render(scene, camera);
   }
