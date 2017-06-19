@@ -46,7 +46,6 @@ function init() {
 
 
   function render() {
-<<<<<<< HEAD
     if (rot < divide) {
       scene.rotation.y += angle;
       rot++;
@@ -56,9 +55,8 @@ function init() {
     } else {
       rot = 0;
     }
+
     controls.update();
-=======
->>>>>>> parent of d15d604... Add Headtracking
     requestAnimationFrame(render);
     effect.render(scene, camera);
   }
