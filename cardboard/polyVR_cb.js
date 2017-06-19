@@ -56,7 +56,6 @@ function init() {
       rot = 0;
     }
 
-    controls.update();
     requestAnimationFrame(render);
     effect.render(scene, camera);
   }

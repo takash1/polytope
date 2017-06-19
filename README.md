@@ -8,13 +8,13 @@
 - [4次元多面体のCG](polytope.html)
 
 ### Google Cardboard
-- [regular600](polytope_cb_regular600.html)
-- [truncated600](polytope_cb_truncated600.html)
-- [rectified600](polytope_cb_rectified600.html)
-- [bitruncated](polytope_cb_bitruncated.html)
-- [rectified120](polytope_cb_rectified120.html)
-- [truncated120](polytope_cb_truncated120.html)
-- [regular120](polytope_cb_regular120.html)
+- [regular600](cardboard/polytope_cb_regular600.html)
+- [truncated600](cardboard/polytope_cb_truncated600.html)
+- [rectified600](cardboard/polytope_cb_rectified600.html)
+- [bitruncated](cardboard/polytope_cb_bitruncated.html)
+- [rectified120](cardboard/polytope_cb_rectified120.html)
+- [truncated120](cardboard/polytope_cb_truncated120.html)
+- [regular120](cardboard/polytope_cb_regular120.html)
 
 
 ## ４次元の世界を覗いてみよう
