@@ -6,6 +6,7 @@ const red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
 const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
 const bry = [blue, red, yellow];
 
+
 setupArray();
 
 function init() {
@@ -14,6 +15,10 @@ function init() {
   const groupY = new THREE.Group();
   const groups = [groupB, groupR, groupY];
   const scene = new THREE.Scene();
+
+  const divide = 100;
+  const angle = 2 * Math.PI / divide;
+  let rot = 0;
 
 
   renderer = new THREE.WebGLRenderer();
@@ -42,6 +47,15 @@ function init() {
 
 
   function render() {
+    if (rot < divide) {
+      scene.rotation.y += angle;
+      rot++;
+    } else if (rot < 2 * divide) {
+      scene.rotation.x += angle;
+      rot++;
+    } else {
+      rot = 0;
+    }
     controls.update();
     requestAnimationFrame(render);
     effect.render(scene, camera);
