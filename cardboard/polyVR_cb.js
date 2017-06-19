@@ -16,7 +16,7 @@ function init() {
   const groups = [groupB, groupR, groupY];
   const scene = new THREE.Scene();
 
-  const divide = 100;
+  const divide = 1000;
   const angle = 2 * Math.PI / divide;
   let rot = 0;
 
