@@ -7,8 +7,6 @@ const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
 const bry = [blue, red, yellow];
 
 
-setupArray();
-
 function init() {
   const groupB = new THREE.Group();
   const groupR = new THREE.Group();
@@ -39,6 +37,7 @@ function init() {
 
   const effect = new THREE.CardboardEffect(renderer);
 
+  setupArray();
   paintComponent();
 
   document.getElementById("WebGL-output").appendChild(renderer.domElement);
