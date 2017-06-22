@@ -16,6 +16,9 @@
 - [truncated120](cardboard/polytope_cb_truncated120.html)
 - [regular120](cardboard/polytope_cb_regular120.html)
 
+### Oculus
+- [Virtual Reality](oculus/polytope_oc.html)
+
 
 ## ４次元の世界を覗いてみよう
 
@@ -25,7 +28,7 @@
 - [詳しい解説](http://www.i.h.kyoto-u.ac.jp/~tsuiki/600cell/)
 
 ## プログラムの概要
-### polytope.html
+### polytope.html/polytope.js
 ブラウザで４次元図形を見ることができます。
 
 回転、拡大などができます。(switchCameraを押した後)
@@ -41,7 +44,12 @@ Chrome, Firefox推奨
 |右上GUI                      |その他の機能　　　　　　　　|
 
 
-### polytope_cb_*.html
+### polytope_oc.html/polyVR_oc.js
+Oculusを用いてVR体験できます。
+
+Firefox Nightlyを利用してください。
+
+### polytope\_cb\_*.html/polyVR_cb.js
 Google Cardboardで立体視できます。
 
 Android端末でChromeを利用してください。
