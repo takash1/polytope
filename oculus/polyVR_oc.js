@@ -36,7 +36,7 @@ function init() {
   camera.lookAt(scene.position);
 
   const controls = new THREE.VRControls(camera);
-  const effect = new THREE.VREffect(WebGLRenderer);
+  const effect = new THREE.VREffect(renderer);
   const clock = new THREE.Clock();
   if (WEBVR.isAvailable()) {
     document.body.appendChild(WEBVR.getButton(effect));
@@ -62,7 +62,7 @@ function init() {
 
     const delta = clock.getDelta();
     controls.update(delta);
-    
+
     requestAnimationFrame(render);
     effect.render(scene, camera);
   }
