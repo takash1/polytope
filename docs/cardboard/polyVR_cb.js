@@ -1,15 +1,13 @@
 let camera;
 let renderer;
 
-const blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
-const red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
-const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
-const bry = [blue, red, yellow];
-
-
-setupArray();
 
 function init() {
+  const blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
+  const red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
+  const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
+  const bry = [blue, red, yellow];
+
   const groupB = new THREE.Group();
   const groupR = new THREE.Group();
   const groupY = new THREE.Group();
@@ -39,6 +37,7 @@ function init() {
 
   const effect = new THREE.CardboardEffect(renderer);
 
+  setupArray();
   paintComponent();
 
   document.getElementById("WebGL-output").appendChild(renderer.domElement);

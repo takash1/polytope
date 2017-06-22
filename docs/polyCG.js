@@ -1,14 +1,13 @@
 let camera;
 let renderer;
 
-const blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
-const red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
-const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
-const bry = [blue, red, yellow];
-
-setupArray();
 
 function init() {
+  const blue = new THREE.LineBasicMaterial({color: 0x1e90ff, opacity: 0.6});
+  const red = new THREE.LineBasicMaterial({color: 0xff0000, opacity: 0.6});
+  const yellow = new THREE.LineBasicMaterial({color: 0xffff00, opacity: 0.6});
+  const bry = [blue, red, yellow];
+
   const stats = initStats();
   const clock = new THREE.Clock();
   const groupB = new THREE.Group();
@@ -39,6 +38,7 @@ function init() {
   const axis = new THREE.AxisHelper(450);
   scene.add(axis);
 
+  setupArray();
   paintComponent();
 
 

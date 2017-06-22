@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <title>Polytope</title>
+  <script type="text/javascript" src="../libs/three.min.js"></script>
+  <script type="text/javascript" src="../libs/WebVR.js"></script>
+  <script type="text/javascript" src="../libs/VREffect.js"></script>
+  <script type="text/javascript" src="../libs/VRControls.js"></script>
+  <script type="text/javascript" src="../polytope.js"></script>
+  <script type="text/javascript" src="polyVR_oc.js"></script>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="WebGL-output">
+  </div>
+
+  <script type="text/javascript">
+    if (WEBVR.isLatestAvailable()) {
+      window.onload = init;
+      window.addEventListener('resize', onResize, false);
+    } else {
+      document.body.appendChild(WEBVR.getMessage());
+    }
+  </script>
+</body>
+
+</html>
