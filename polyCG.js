@@ -55,13 +55,19 @@ function init() {
     this.cameraMode = "Perspective";
     this.switchCamera = function() {
       if (camera instanceof THREE.PerspectiveCamera) {
+        // current position
+        let tmpX = camera.position.x;
+        let tmpY = camera.position.y;
+        let tmpZ = camera.position.z;
+
         camera = new THREE.OrthographicCamera(window.innerWidth / -2,
                                               window.innerWidth / 2,
                                               window.innerHeight / 2,
                                               window.innerHeight / -2,
                                               -100, 3000);
-        camera.position.z = -1000;
-        camera.lookAt(scene.position);
+        camera.position.x = tmpX;
+        camera.position.y = tmpY;
+        camera.position.z = tmpZ;
 
         trackballConrols = new THREE.OrthographicTrackballControls(camera,
                                                           renderer.domElement);
@@ -71,11 +77,17 @@ function init() {
 
         this.cameraMode = "Orthographic";
       } else {
+        // current position
+        let tmpX = camera.position.x;
+        let tmpY = camera.position.y;
+        let tmpZ = camera.position.z;
+
         camera = new THREE.PerspectiveCamera(45,
                                        window.innerWidth / window.innerHeight,
                                        0.1, 3000);
-        camera.position.z = -780;
-        camera.lookAt(scene.position);
+        camera.position.x = tmpX;
+        camera.position.y = tmpY;
+        camera.position.z = tmpZ;
 
         trackballConrols = new THREE.TrackballControls(camera,
                                                        renderer.domElement);
